@@ -1,0 +1,10 @@
+# Environment variables
+config.env
+
+
+
+config/backups
+
+
+# Node.js dependencies
+node_modules/

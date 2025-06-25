@@ -1,0 +1,30 @@
+[
+  {
+    "id": "83f4b3f6-86f3-4ea8-b4d3-11f7b9ece50d",
+    "username": "user",
+    "image": null,
+    "firstname": "User",
+    "lastname": "User",
+    "email": "user@gmail.com",
+    "password": "$2b$12$5GUk2QzGQJSSqPD.TJMID.v1LePQJ0N5kLtS2/tVPwVzRjr6F9tcm",
+    "phone": null,
+    "role": "user",
+    "createdAt": "2025-06-22T14:40:00.000Z",
+    "active": 1,
+    "passwordChangedAt": "2025-06-22T14:40:00.000Z"
+  },
+  {
+    "id": "9508d2b1-34ee-4a26-a7b6-1e6309459909",
+    "username": "property_owner",
+    "image": null,
+    "firstname": "Property",
+    "lastname": "Owner",
+    "email": "owner@example.com",
+    "password": "$2b$12$Pnd2DgVAwaGoc/.HIFjXoOPFq21.qBs/uoDXDBOvueRfaiBbl4iaC",
+    "phone": null,
+    "role": "admin",
+    "createdAt": "2025-06-22T14:39:59.000Z",
+    "active": 1,
+    "passwordChangedAt": "2025-06-22T14:40:00.000Z"
+  }
+]
