@@ -36,7 +36,7 @@ Router
     .get(authController.protect,userController.getAllUsers)
     
 Router
- .route('/:id')
+ .route('/user')
     .get(authController.protect,userController.getUser)
     
     module.exports = Router;

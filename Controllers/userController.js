@@ -29,26 +29,32 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
 });
 
 exports.getUser = catchAsync(async (req, res, next) => {
-    const user = await User.findOne({
-        where: {
-            [Op.or]: [
-                { email: req.params.id },
-                { username: req.params.id }
-            ]
-        },
-        attributes: { exclude: ['password', 'passwordChangedAt', 'passwordResetToken', 'passwordResetExpires'] },
-    });
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) {
+    return next(new AppError('You are not logged in! Please log in to get user data.', 401));
+  }
 
-    if (!user) {
-        return next(new AppError('No user found with that email or name.', 404));
-    }
+  let decoded;
+  try {
+    decoded = jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return next(new AppError('Invalid token. Please log in again.', 401));
+  }
 
-    res.status(200).json({
-        status: 'success',
-        data: {
-            user,
-        },
-    });
+  const user = await User.findByPk(decoded.id, {
+    attributes: { exclude: ['password', 'passwordChangedAt', 'passwordResetToken', 'passwordResetExpires'] },
+  });
+
+  if (!user) {
+    return next(new AppError('No user found with that id.', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      user,
+    },
+  });
 });
 
 exports.getUserThings = catchAsync(async (req, res, next) => {
